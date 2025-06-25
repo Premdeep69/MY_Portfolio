@@ -2,9 +2,10 @@
 
 import { useTranslation } from "react-i18next"
 
-import { Github, Mail, Phone, Heart } from "lucide-react"
+import { Github, Heart, Mail, Phone } from "lucide-react"
 
 export default function Footer() {
+  const { t } = useTranslation()
   const currentYear = new Date().getFullYear()
 
   return (
@@ -13,10 +14,9 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-bold mb-4">Premdeep Rai</h3>
+            <h3 className="text-2xl font-bold mb-4">{t("home.name")}</h3>
             <p className="text-gray-300 mb-4">
-              Aspiring Full-Stack Developer passionate about creating innovative solutions and contributing to
-              meaningful projects.
+              {t("footer.description")}
             </p>
             <div className="flex space-x-4">
               <a
@@ -38,26 +38,26 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+            <h4 className="text-lg font-semibold mb-4">{t("footer.quickLinks")}</h4>
             <ul className="space-y-2">
               <li>
                 <a href="/" className="text-gray-300 hover:text-white transition-colors">
-                  Home
+                  {t("nav.home")}
                 </a>
               </li>
               <li>
                 <a href="/about" className="text-gray-300 hover:text-white transition-colors">
-                  About
+                  {t("nav.about")}
                 </a>
               </li>
               <li>
                 <a href="/projects" className="text-gray-300 hover:text-white transition-colors">
-                  Projects
+                  {t("nav.projects")}
                 </a>
               </li>
               <li>
                 <a href="/contact" className="text-gray-300 hover:text-white transition-colors">
-                  Contact
+                  {t("nav.contact")}
                 </a>
               </li>
             </ul>
@@ -65,7 +65,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Get In Touch</h4>
+            <h4 className="text-lg font-semibold mb-4">{t("footer.getInTouch")}</h4>
             <div className="space-y-2 text-gray-300">
               <p>📧 Premdiprai1234@gmail.com</p>
               <p>📱 +977 9811358831</p>
@@ -76,9 +76,9 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-300 flex items-center justify-center">
-            © {currentYear} Premdeep Rai. Made with{" "}
+            © {currentYear} {t("home.name")}. {t("footer.madeWith")}{" "}
             <Heart className="text-red-500 mx-1" size={16} fill="currentColor" />
-            and React
+            {t("footer.and")}
           </p>
         </div>
       </div>

@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next"
 import { CheckCircle, Github, Mail, MapPin, Phone, Send } from "lucide-react"
 
 export default function Contact() {
+  const { t } = useTranslation()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -39,25 +40,25 @@ export default function Contact() {
   const contactInfo = [
     {
       icon: Phone,
-      label: "Phone",
+      label: t("contact.labels.phone"),
       value: "+977 9811358831",
       href: "tel:+9779811358831",
     },
     {
       icon: Mail,
-      label: "Email",
+      label: t("contact.labels.email"),
       value: "Premdiprai1234@gmail.com",
       href: "mailto:Premdiprai1234@gmail.com",
     },
     {
       icon: MapPin,
-      label: "Location",
+      label: t("contact.labels.location"),
       value: "Dharan, Sunsari",
       href: "#",
     },
     {
       icon: Github,
-      label: "GitHub",
+      label: t("contact.labels.github"),
       value: "github.com/Premdeep69",
       href: "https://github.com/Premdeep69",
     },
@@ -68,17 +69,16 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Get In Touch</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">{t("contact.title")}</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            I'm always open to discussing new opportunities, interesting projects, or just having a chat about
-            technology. Feel free to reach out!
+            {t("contact.subtitle")}
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-8">Contact Information</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-8">{t("contact.contactInfo")}</h2>
 
             <div className="space-y-6">
               {contactInfo.map((item, index) => (
@@ -107,33 +107,32 @@ export default function Contact() {
 
             {/* Additional Info */}
             <div className="mt-12 p-6 bg-blue-50 rounded-lg">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Looking for Opportunities</h3>
-              <p className="text-gray-700 mb-4">I'm currently seeking internship opportunities in:</p>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">{t("contact.lookingFor")}</h3>
+              <p className="text-gray-700 mb-4">{t("contact.lookingForDescription")}</p>
               <ul className="list-disc list-inside text-gray-700 space-y-1">
-                <li>React Native Development</li>
-                <li>Full-Stack Web Development</li>
-                <li>Mobile App Development</li>
-                <li>JavaScript/Node.js Projects</li>
+                {(t("contact.opportunities", { returnObjects: true }) as string[]).map((opportunity: string, index: number) => (
+                  <li key={index}>{opportunity}</li>
+                ))}
               </ul>
             </div>
           </div>
 
           {/* Contact Form */}
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-8">Send a Message</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-8">{t("contact.sendMessage")}</h2>
 
             {isSubmitted ? (
               <div className="bg-green-50 border border-green-200 rounded-lg p-8 text-center">
                 <CheckCircle className="text-green-600 mx-auto mb-4" size={48} />
-                <h3 className="text-lg font-semibold text-green-800 mb-2">Message Sent!</h3>
-                <p className="text-green-700">Thank you for your message. I'll get back to you as soon as possible.</p>
+                <h3 className="text-lg font-semibold text-green-800 mb-2">{t("contact.form.successTitle")}</h3>
+                <p className="text-green-700">{t("contact.form.successMessage")}</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      Name *
+                      {t("contact.form.name")} *
                     </label>
                     <input
                       type="text"
@@ -143,13 +142,13 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                      placeholder="Your full name"
+                      placeholder={t("contact.form.namePlaceholder")}
                     />
                   </div>
 
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email *
+                      {t("contact.form.email")} *
                     </label>
                     <input
                       type="email"
@@ -159,14 +158,14 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                      placeholder="your.email@example.com"
+                      placeholder={t("contact.form.emailPlaceholder")}
                     />
                   </div>
                 </div>
 
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                    Subject *
+                    {t("contact.form.subject")} *
                   </label>
                   <input
                     type="text"
@@ -176,13 +175,13 @@ export default function Contact() {
                     value={formData.subject}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                    placeholder="What's this about?"
+                    placeholder={t("contact.form.subjectPlaceholder")}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message *
+                    {t("contact.form.message")} *
                   </label>
                   <textarea
                     id="message"
@@ -192,16 +191,16 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-vertical"
-                    placeholder="Tell me about your project, opportunity, or just say hello!"
+                    placeholder={t("contact.form.messagePlaceholder")}
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center"
+                  className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center"
                 >
-                  <Send size={18} className="mr-2" />
-                  Send Message
+                  <Send className="mr-2" size={18} />
+                  {t("contact.form.sendButton")}
                 </button>
               </form>
             )}

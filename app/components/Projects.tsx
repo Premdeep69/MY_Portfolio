@@ -16,63 +16,62 @@ interface Project {
 }
 
 export default function Projects() {
+  const { t } = useTranslation()
+  
   const projects: Project[] = [
     {
       id: 1,
-      title: "Library Management System",
-      description: "Efficiently manage book inventory, user records, and transactions",
-      longDescription:
-        "A comprehensive library management system that allows librarians to manage book inventory, track user records, handle book transactions (issue/return), and generate reports. Features include user authentication, book search functionality, fine calculation, and database management.",
+      title: t("projects.projectList.libraryManagement.title"),
+      description: t("projects.projectList.libraryManagement.description"),
+      longDescription: t("projects.projectList.libraryManagement.longDescription"),
       technologies: ["HTML", "CSS", "JavaScript", "JDBC", "MySQL", "Java"],
       githubUrl: "https://github.com/Premdeep69",
-      category: "Web Development",
+      category: t("projects.categories.webDevelopment"),
     },
     {
       id: 2,
-      title: "Gym Trainee App",
-      description: "Manage workout schedules, track progress, and streamline trainee information",
-      longDescription:
-        "A mobile application designed for gym management that helps trainers manage workout schedules, track trainee progress, monitor attendance, and maintain detailed trainee profiles. The app includes features for workout planning, progress tracking, and communication between trainers and trainees.",
+      title: t("projects.projectList.gymTrainee.title"),
+      description: t("projects.projectList.gymTrainee.description"),
+      longDescription: t("projects.projectList.gymTrainee.longDescription"),
       technologies: ["React Native", "Node.js", "MySQL"],
       githubUrl: "https://github.com/Premdeep69",
-      category: "Mobile Development",
+      category: t("projects.categories.mobileDevelopment"),
     },
     {
       id: 3,
-      title: "Personal Portfolio Website",
-      description: "Responsive portfolio website showcasing projects and skills",
-      longDescription:
-        "A modern, responsive portfolio website built with React and React Router. Features include project showcase with filtering, responsive design, contact form, and smooth animations. Deployed on Vercel with automatic CI/CD integration.",
+      title: t("projects.projectList.portfolio.title"),
+      description: t("projects.projectList.portfolio.description"),
+      longDescription: t("projects.projectList.portfolio.longDescription"),
       technologies: ["React", "React Router", "Tailwind CSS", "Vercel"],
       githubUrl: "https://github.com/Premdeep69",
       liveUrl: "#",
-      category: "Web Development",
+      category: t("projects.categories.webDevelopment"),
     },
   ]
 
-  const [selectedFilter, setSelectedFilter] = useState("All")
+  const [selectedFilter, setSelectedFilter] = useState(t("projects.categories.all"))
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
-  const categories = ["All", "Web Development", "Mobile Development"]
+  const categories = [t("projects.categories.all"), t("projects.categories.webDevelopment"), t("projects.categories.mobileDevelopment")]
   const allTechnologies = Array.from(new Set(projects.flatMap((p) => p.technologies)))
 
   const filteredProjects =
-    selectedFilter === "All" ? projects : projects.filter((project) => project.category === selectedFilter)
+    selectedFilter === t("projects.categories.all") ? projects : projects.filter((project) => project.category === selectedFilter)
 
   return (
     <div className="py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">My Projects</h1>
-          <p className="text-xl text-gray-600">A collection of projects showcasing my development skills</p>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">{t("projects.title")}</h1>
+          <p className="text-xl text-gray-600">{t("projects.subtitle")}</p>
         </div>
 
         {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           <div className="flex items-center text-gray-600 mr-4">
             <Filter size={20} className="mr-2" />
-            <span className="font-medium">Filter by:</span>
+            <span className="font-medium">{t("projects.filterBy")}</span>
           </div>
           {categories.map((category) => (
             <button
@@ -89,7 +88,7 @@ export default function Projects() {
 
         {/* Technology Filter */}
         <div className="mb-12">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">Technologies Used</h3>
+          <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">{t("projects.technologiesUsed")}</h3>
           <div className="flex flex-wrap justify-center gap-2">
             {allTechnologies.map((tech) => (
               <span key={tech} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
@@ -140,7 +139,7 @@ export default function Projects() {
                       className="flex items-center text-gray-600 hover:text-gray-900 transition-colors"
                     >
                       <Github size={18} className="mr-1" />
-                      <span className="text-sm">Code</span>
+                      <span className="text-sm">{t("projects.code")}</span>
                     </a>
                   )}
                   {project.liveUrl && (
@@ -152,7 +151,7 @@ export default function Projects() {
                       className="flex items-center text-blue-600 hover:text-blue-800 transition-colors"
                     >
                       <ExternalLink size={18} className="mr-1" />
-                      <span className="text-sm">Live Demo</span>
+                      <span className="text-sm">{t("projects.liveDemo")}</span>
                     </a>
                   )}
                 </div>
@@ -160,6 +159,13 @@ export default function Projects() {
             </div>
           ))}
         </div>
+
+        {/* No Projects Found */}
+        {filteredProjects.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-gray-600 text-lg">{t("projects.noProjects")}</p>
+          </div>
+        )}
 
         {/* Project Modal */}
         {selectedProject && (
@@ -185,7 +191,7 @@ export default function Projects() {
                 <p className="text-gray-700 mb-6 leading-relaxed">{selectedProject.longDescription}</p>
 
                 <div className="mb-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">Technologies Used</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">{t("projects.technologiesUsed")}</h3>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.technologies.map((tech) => (
                       <span key={tech} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-lg text-sm font-medium">
@@ -201,10 +207,10 @@ export default function Projects() {
                       href={selectedProject.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors flex items-center"
+                      className="flex items-center bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors"
                     >
                       <Github size={18} className="mr-2" />
-                      View Code
+                      {t("projects.viewCode")}
                     </a>
                   )}
                   {selectedProject.liveUrl && (
@@ -212,22 +218,15 @@ export default function Projects() {
                       href={selectedProject.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center"
+                      className="flex items-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
                     >
                       <ExternalLink size={18} className="mr-2" />
-                      Live Demo
+                      {t("projects.liveDemo")}
                     </a>
                   )}
                 </div>
               </div>
             </div>
-          </div>
-        )}
-
-        {/* No Projects Message */}
-        {filteredProjects.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-600 text-lg">No projects found for the selected filter.</p>
           </div>
         )}
       </div>

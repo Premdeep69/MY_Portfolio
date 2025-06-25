@@ -1,12 +1,18 @@
 "use client"
 
-import { useState } from "react"
+import { ChevronDown, Globe } from "lucide-react"
+import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
-import { Globe, ChevronDown } from "lucide-react"
 
 export default function LanguageSwitcher() {
   const { i18n, t } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
+
+  // Debug: Log current language
+  useEffect(() => {
+    console.log("Current language:", i18n.language)
+    console.log("Available languages:", i18n.languages)
+  }, [i18n.language])
 
   const languages = [
     { code: "en", name: t("language.english"), flag: "🇺🇸" },
@@ -17,6 +23,7 @@ export default function LanguageSwitcher() {
   const currentLanguage = languages.find((lang) => lang.code === i18n.language) || languages[0]
 
   const changeLanguage = (languageCode: string) => {
+    console.log("Changing language to:", languageCode)
     i18n.changeLanguage(languageCode)
     setIsOpen(false)
   }
