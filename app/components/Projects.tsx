@@ -2,6 +2,7 @@
 
 import { ExternalLink, Filter, Github } from "lucide-react"
 import { useState } from "react"
+import { useTranslation } from "react-i18next"
 
 interface Project {
   id: number

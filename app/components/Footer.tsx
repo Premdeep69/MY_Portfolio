@@ -1,5 +1,7 @@
 "use client"
 
+import { useTranslation } from "react-i18next"
+
 import { Github, Mail, Phone, Heart } from "lucide-react"
 
 export default function Footer() {

@@ -1,0 +1,135 @@
+{
+    "nav": {
+      "home": "ホーム",
+      "about": "私について",
+      "projects": "プロジェクト",
+      "contact": "お問い合わせ"
+    },
+    "home": {
+      "greeting": "こんにちは、私は",
+      "name": "プレムディープ・ライ",
+      "tagline": "志望フルスタック開発者＆モバイルアプリ愛好家",
+      "description": "React NativeとJavaScriptのスキルを強化するためのインターンシップを求めており、モバイルおよびWebアプリケーション開発における長期的なキャリアの強固な基盤を築くことを目標としています。",
+      "viewProjects": "プロジェクトを見る",
+      "getInTouch": "お問い合わせ",
+      "technicalSkills": "技術スキル",
+      "skillsDescription": "私が使用する技術",
+      "featuredProjects": "注目のプロジェクト",
+      "projectsDescription": "最近の作品の一部",
+      "viewAllProjects": "すべてのプロジェクトを見る"
+    },
+    "about": {
+      "title": "私について",
+      "subtitle": "技術に情熱を持ち、革新的なプロジェクトに貢献することを熱望しています",
+      "careerObjective": "キャリア目標",
+      "careerDescription": "React NativeとJavaScriptのスキルを強化するためのインターンシップを求めており、モバイルおよびWebアプリケーション開発における長期的なキャリアの強固な基盤を築くことを目標としています。学習し、実際のプロジェクトに貢献し、熟練したフルスタック開発者に成長することを熱望しています。",
+      "education": "学歴",
+      "skills": "スキル",
+      "technicalSkills": "技術スキル",
+      "softSkills": "ソフトスキル",
+      "personalInfo": "個人情報",
+      "contactDetails": "連絡先詳細",
+      "onlinePresence": "オンラインプレゼンス",
+      "reference": "推薦者",
+      "phone": "電話",
+      "email": "メール",
+      "address": "住所",
+      "github": "GitHub",
+      "degree1": "BSC. (Hons) Computing",
+      "college1": "London Metropolitan College",
+      "location1": "Itahari International College",
+      "duration1": "2023年 - 現在",
+      "address1": "スンダルハライチャ04、モラン",
+      "degree2": "コンピューターサイエンス+2",
+      "college2": "ビジャヤプル中等学校/大学",
+      "location2": "ダラン14、スンサリ",
+      "duration2": "2020年 - 2022年"
+    },
+    "projects": {
+      "title": "私のプロジェクト",
+      "subtitle": "開発スキルを紹介するプロジェクトのコレクション",
+      "filterBy": "フィルター:",
+      "technologiesUsed": "使用技術",
+      "noProjects": "選択されたフィルターに該当するプロジェクトが見つかりません。",
+      "viewCode": "コードを見る",
+      "liveDemo": "ライブデモ",
+      "code": "コード",
+      "categories": {
+        "all": "すべて",
+        "webDevelopment": "Web開発",
+        "mobileDevelopment": "モバイル開発"
+      },
+      "projectList": {
+        "libraryManagement": {
+          "title": "図書館管理システム",
+          "description": "書籍在庫、ユーザー記録、取引を効率的に管理",
+          "longDescription": "図書館員が書籍在庫の管理、ユーザー記録の追跡、書籍取引（貸出/返却）の処理、レポートの生成を行うことができる包括的な図書館管理システム。ユーザー認証、書籍検索機能、罰金計算、データベース管理などの機能が含まれています。"
+        },
+        "gymTrainee": {
+          "title": "ジム研修生アプリ",
+          "description": "ワークアウトスケジュールの管理、進捗の追跡、研修生情報の合理化",
+          "longDescription": "ジム管理用に設計されたモバイルアプリケーションで、トレーナーがワークアウトスケジュールの管理、研修生の進捗追跡、出席監視、詳細な研修生プロファイルの維持を支援します。ワークアウト計画、進捗追跡、トレーナーと研修生間のコミュニケーション機能が含まれています。"
+        },
+        "portfolio": {
+          "title": "個人ポートフォリオウェブサイト",
+          "description": "プロジェクトとスキルを紹介するレスポンシブポートフォリオウェブサイト",
+          "longDescription": "ReactとReact Routerで構築されたモダンでレスポンシブなポートフォリオウェブサイト。フィルタリング機能付きプロジェクトショーケース、レスポンシブデザイン、お問い合わせフォーム、スムーズなアニメーションが特徴です。自動CI/CD統合でVercelにデプロイされています。"
+        }
+      }
+    },
+    "contact": {
+      "title": "お問い合わせ",
+      "subtitle": "新しい機会、興味深いプロジェクト、または技術についてのチャットについて話し合うことを常に歓迎しています。お気軽にお声がけください！",
+      "contactInfo": "連絡先情報",
+      "sendMessage": "メッセージを送信",
+      "lookingFor": "求めている機会",
+      "lookingForDescription": "現在、以下の分野でのインターンシップの機会を求めています：",
+      "opportunities": [
+        "React Native開発",
+        "フルスタックWeb開発",
+        "モバイルアプリ開発",
+        "JavaScript/Node.jsプロジェクト"
+      ],
+      "form": {
+        "name": "名前",
+        "email": "メール",
+        "subject": "件名",
+        "message": "メッセージ",
+        "namePlaceholder": "お名前",
+        "emailPlaceholder": "your.email@example.com",
+        "subjectPlaceholder": "何についてですか？",
+        "messagePlaceholder": "プロジェクト、機会について、または単にご挨拶をお聞かせください！",
+        "sendButton": "メッセージを送信",
+        "sending": "送信中...",
+        "successTitle": "メッセージが送信されました！",
+        "successMessage": "メッセージをありがとうございます。できるだけ早くお返事いたします。"
+      },
+      "labels": {
+        "phone": "電話",
+        "email": "メール",
+        "location": "場所",
+        "github": "GitHub"
+      }
+    },
+    "footer": {
+      "description": "革新的なソリューションの創造と意義のあるプロジェクトへの貢献に情熱を持つ志望フルスタック開発者。",
+      "quickLinks": "クイックリンク",
+      "getInTouch": "お問い合わせ",
+      "madeWith": "作成：",
+      "and": "とReact",
+      "allRights": "すべての権利を保有。"
+    },
+    "language": {
+      "switch": "言語を切り替え",
+      "english": "English",
+      "nepali": "नेपाली",
+      "japanese": "日本語"
+    },
+    "skills": {
+      "communication": "コミュニケーション",
+      "problemSolving": "問題解決",
+      "teamwork": "チームワーク",
+      "timeManagement": "時間管理"
+    }
+  }
+  

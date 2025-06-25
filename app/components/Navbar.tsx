@@ -1,18 +1,21 @@
 "use client"
 
-import { useState } from "react"
-import { Link, useLocation } from "react-router-dom"
 import { Menu, X } from "lucide-react"
+import { useState } from "react"
+import { useTranslation } from "react-i18next"
+import { Link, useLocation } from "react-router-dom"
+import LanguageSwitcher from "./LanguageSwitcher"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
+  const { t } = useTranslation()
 
   const navItems = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Projects", path: "/projects" },
-    { name: "Contact", path: "/contact" },
+    { name: t("nav.home"), path: "/" },
+    { name: t("nav.about"), path: "/about" },
+    { name: t("nav.projects"), path: "/projects" },
+    { name: t("nav.contact"), path: "/contact" },
   ]
 
   const isActive = (path: string) => location.pathname === path
@@ -42,6 +45,7 @@ export default function Navbar() {
                 {item.name}
               </Link>
             ))}
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile menu button */}
@@ -70,6 +74,9 @@ export default function Navbar() {
                   {item.name}
                 </Link>
               ))}
+              <div className="px-3 py-2">
+                <LanguageSwitcher />
+              </div>
             </div>
           </div>
         )}

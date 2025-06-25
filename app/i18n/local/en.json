@@ -1,0 +1,134 @@
+{
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "projects": "Projects",
+      "contact": "Contact"
+    },
+    "home": {
+      "greeting": "Hi, I'm",
+      "name": "Premdeep Rai",
+      "tagline": "Aspiring Full-Stack Developer & Mobile App Enthusiast",
+      "description": "Seeking an internship to strengthen my skills in React Native and JavaScript, with the goal of building a strong foundation for a long-term career in mobile and web application development.",
+      "viewProjects": "View My Projects",
+      "getInTouch": "Get In Touch",
+      "technicalSkills": "Technical Skills",
+      "skillsDescription": "Technologies I work with",
+      "featuredProjects": "Featured Projects",
+      "projectsDescription": "Some of my recent work",
+      "viewAllProjects": "View All Projects"
+    },
+    "about": {
+      "title": "About Me",
+      "subtitle": "Passionate about technology and eager to contribute to innovative projects",
+      "careerObjective": "Career Objective",
+      "careerDescription": "I am seeking an internship to strengthen my skills in React Native and JavaScript, with the goal of building a strong foundation for a long-term career in mobile and web application development. I am eager to learn, contribute to real-world projects, and grow into a skilled full-stack developer.",
+      "education": "Education",
+      "skills": "Skills",
+      "technicalSkills": "Technical Skills",
+      "softSkills": "Soft Skills",
+      "personalInfo": "Personal Information",
+      "contactDetails": "Contact Details",
+      "onlinePresence": "Online Presence",
+      "reference": "Reference",
+      "phone": "Phone",
+      "email": "Email",
+      "address": "Address",
+      "github": "GitHub",
+      "degree1": "BSC. (Hons) Computing",
+      "college1": "London Metropolitan College",
+      "location1": "Itahari International College",
+      "duration1": "2023 - Present",
+      "address1": "Sundarharaicha 04, Morang",
+      "degree2": "+2 in Computer Science",
+      "college2": "Vijayapur Secondary School/College",
+      "location2": "Dharan 14, Sunsari",
+      "duration2": "2020 - 2022"
+    },
+    "projects": {
+      "title": "My Projects",
+      "subtitle": "A collection of projects showcasing my development skills",
+      "filterBy": "Filter by:",
+      "technologiesUsed": "Technologies Used",
+      "noProjects": "No projects found for the selected filter.",
+      "viewCode": "View Code",
+      "liveDemo": "Live Demo",
+      "code": "Code",
+      "categories": {
+        "all": "All",
+        "webDevelopment": "Web Development",
+        "mobileDevelopment": "Mobile Development"
+      },
+      "projectList": {
+        "libraryManagement": {
+          "title": "Library Management System",
+          "description": "Efficiently manage book inventory, user records, and transactions",
+          "longDescription": "A comprehensive library management system that allows librarians to manage book inventory, track user records, handle book transactions (issue/return), and generate reports. Features include user authentication, book search functionality, fine calculation, and database management."
+        },
+        "gymTrainee": {
+          "title": "Gym Trainee App",
+          "description": "Manage workout schedules, track progress, and streamline trainee information",
+          "longDescription": "A mobile application designed for gym management that helps trainers manage workout schedules, track trainee progress, monitor attendance, and maintain detailed trainee profiles. The app includes features for workout planning, progress tracking, and communication between trainers and trainees."
+        },
+        "portfolio": {
+          "title": "Personal Portfolio Website",
+          "description": "Responsive portfolio website showcasing projects and skills",
+          "longDescription": "A modern, responsive portfolio website built with React and React Router. Features include project showcase with filtering, responsive design, contact form, and smooth animations. Deployed on Vercel with automatic CI/CD integration."
+        }
+      }
+    },
+    "contact": {
+      "title": "Get In Touch",
+      "subtitle": "I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology. Feel free to reach out!",
+      "contactInfo": "Contact Information",
+      "sendMessage": "Send a Message",
+      "lookingFor": "Looking for Opportunities",
+      "lookingForDescription": "I'm currently seeking internship opportunities in:",
+      "opportunities": [
+        "React Native Development",
+        "Full-Stack Web Development",
+        "Mobile App Development",
+        "JavaScript/Node.js Projects"
+      ],
+      "form": {
+        "name": "Name",
+        "email": "Email",
+        "subject": "Subject",
+        "message": "Message",
+        "namePlaceholder": "Your full name",
+        "emailPlaceholder": "your.email@example.com",
+        "subjectPlaceholder": "What's this about?",
+        "messagePlaceholder": "Tell me about your project, opportunity, or just say hello!",
+        "sendButton": "Send Message",
+        "sending": "Sending...",
+        "successTitle": "Message Sent!",
+        "successMessage": "Thank you for your message. I'll get back to you as soon as possible."
+      },
+      "labels": {
+        "phone": "Phone",
+        "email": "Email",
+        "location": "Location",
+        "github": "GitHub"
+      }
+    },
+    "footer": {
+      "description": "Aspiring Full-Stack Developer passionate about creating innovative solutions and contributing to meaningful projects.",
+      "quickLinks": "Quick Links",
+      "getInTouch": "Get In Touch",
+      "madeWith": "Made with",
+      "and": "and React",
+      "allRights": "All rights reserved."
+    },
+    "language": {
+      "switch": "Switch Language",
+      "english": "English",
+      "nepali": "नेपाली"
+    },
+    "skills": {
+      "communication": "Communication",
+      "problemSolving": "Problem Solving",
+      "teamwork": "Teamwork",
+      "timeManagement": "Time Management"
+    }
+  }
+  

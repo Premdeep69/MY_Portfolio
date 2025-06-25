@@ -2,8 +2,10 @@
 
 import type React from "react"
 
-import { CheckCircle, Github, Mail, MapPin, Phone, Send } from "lucide-react"
 import { useState } from "react"
+import { useTranslation } from "react-i18next"
+
+import { CheckCircle, Github, Mail, MapPin, Phone, Send } from "lucide-react"
 
 export default function Contact() {
   const [formData, setFormData] = useState({

@@ -1,8 +1,11 @@
 "use client"
 
+import { useTranslation } from "react-i18next"
 import { Award, GraduationCap, Target, User } from "lucide-react"
 
 export default function About() {
+  const { t } = useTranslation()
+
   const skills = {
     technical: ["HTML/CSS", "JavaScript", "Python", "MySQL", "React Native", "Node.js", "JDBC", "Java"],
     soft: ["Communication", "Problem Solving", "Teamwork", "Time Management"],
