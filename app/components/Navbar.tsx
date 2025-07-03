@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next"
 import { Link, useLocation } from "react-router-dom"
 import LanguageSwitcher from "./LanguageSwitcher"
 
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
@@ -16,6 +17,7 @@ export default function Navbar() {
     { name: t("nav.about"), path: "/about" },
     { name: t("nav.projects"), path: "/projects" },
     { name: t("nav.contact"), path: "/contact" },
+    { name: t("Blog"), path: "/blog" },
   ]
 
   const isActive = (path: string) => location.pathname === path

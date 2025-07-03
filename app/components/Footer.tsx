@@ -1,8 +1,8 @@
 "use client"
 
 import { useTranslation } from "react-i18next"
-
-import { Github, Heart, Mail, Phone } from "lucide-react"
+import { Github, Mail, Phone, Heart } from "lucide-react"
+import { Link } from "react-router-dom"
 
 export default function Footer() {
   const { t } = useTranslation()
@@ -15,9 +15,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <h3 className="text-2xl font-bold mb-4">{t("home.name")}</h3>
-            <p className="text-gray-300 mb-4">
-              {t("footer.description")}
-            </p>
+            <p className="text-gray-300 mb-4">{t("footer.description")}</p>
             <div className="flex space-x-4">
               <a
                 href="https://github.com/Premdeep69"
@@ -46,19 +44,19 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/about" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/about" className="text-gray-300 hover:text-white transition-colors">
                   {t("nav.about")}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/projects" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/projects" className="text-gray-300 hover:text-white transition-colors">
                   {t("nav.projects")}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/contact" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">
                   {t("nav.contact")}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -78,10 +76,10 @@ export default function Footer() {
           <p className="text-gray-300 flex items-center justify-center">
             © {currentYear} {t("home.name")}. {t("footer.madeWith")}{" "}
             <Heart className="text-red-500 mx-1" size={16} fill="currentColor" />
-            {t("footer.and")}
+            {t("footer.and")}. {t("footer.allRights")}
           </p>
         </div>
       </div>
     </footer>
   )
-}
+}     
