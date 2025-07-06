@@ -17,7 +17,7 @@ export default function Navbar() {
     { name: t("nav.about"), path: "/about" },
     { name: t("nav.projects"), path: "/projects" },
     { name: t("nav.contact"), path: "/contact" },
-    { name: t("Blog"), path: "/blog" },
+    { name: t("nav.blog"), path: "/blog" },
   ]
 
   const isActive = (path: string) => location.pathname === path

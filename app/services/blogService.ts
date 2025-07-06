@@ -35,8 +35,11 @@ class BlogService {
 
     if (error) throw error
 
+    // Transform the data to match the BlogPost interface
+    const transformedData = (data as any[]).map(blog => this.transformBlogData(blog)) as BlogPost[]
+
     return {
-      data: data as BlogPost[],
+      data: transformedData,
       count: count || 0,
       totalPages: Math.ceil((count || 0) / pagination.limit),
       currentPage: pagination.page
@@ -44,18 +47,86 @@ class BlogService {
   }
 
   async getBlogBySlug(slug: string): Promise<BlogPost | null> {
-    const { data, error } = await supabase
+    // First try to find by slug
+    let { data, error } = await supabase
       .from('blogs')
       .select('*')
       .eq('slug', slug)
       .single()
 
-    if (error) {
-      if (error.code === 'PGRST116') return null // Not found
+    if (error && error.code === 'PGRST116') {
+      // If slug doesn't exist, try to find by ID (fallback for existing posts)
+      const { data: idData, error: idError } = await supabase
+        .from('blogs')
+        .select('*')
+        .eq('id', slug)
+        .single()
+      
+      if (idError && idError.code === 'PGRST116') {
+        // If ID doesn't exist, try to find by title (fallback for existing posts)
+        const titleFromSlug = slug
+          .split('-')
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ')
+        
+        const { data: titleData, error: titleError } = await supabase
+          .from('blogs')
+          .select('*')
+          .ilike('title', `%${titleFromSlug}%`)
+          .single()
+        
+        if (titleError) {
+          return null // Not found
+        }
+        
+        data = titleData
+      } else if (idError) {
+        throw idError
+      } else {
+        data = idData
+      }
+    } else if (error) {
       throw error
     }
 
-    return data as BlogPost
+    if (!data) return null
+
+    return this.transformBlogData(data)
+  }
+
+  private generateSlug(title: string): string {
+    return title
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-+|-+$/g, '')
+  }
+
+  private generateExcerpt(content: string): string {
+    const firstParagraph = content.split('\n\n')[1] || content.split('\n')[0] || ''
+    return firstParagraph.replace(/^#+\s*/, '').substring(0, 200) + '...'
+  }
+
+  private transformBlogData(data: any): BlogPost {
+    return {
+      id: data.id,
+      title: data.title,
+      slug: data.slug || this.generateSlug(data.title),
+      content: data.content,
+      excerpt: data.excerpt || this.generateExcerpt(data.content),
+      thumbnail: data.thumbnail,
+      video_url: data.video_url,
+      created_at: data.created_at,
+      updated_at: data.updated_at || data.created_at,
+      published_at: data.published_at || data.created_at,
+      views: data.views || 0,
+      reading_time: data.reading_time || Math.ceil(data.content.split(' ').length / 200),
+      tags: data.tags || [],
+      type: data.type || 'Tutorial',
+      status: data.status || 'published',
+      featured: data.featured || false
+    }
   }
 
   async incrementViews(blogId: string) {
@@ -72,7 +143,7 @@ class BlogService {
       .limit(limit)
 
     if (error) throw error
-    return data as BlogPost[]
+    return (data as any[]).map(blog => this.transformBlogData(blog)) as BlogPost[]
   }
 
   async getFeaturedBlogs(limit = 3): Promise<BlogPost[]> {
@@ -83,7 +154,25 @@ class BlogService {
       .limit(limit)
 
     if (error) throw error
-    return data as BlogPost[]
+    
+    return (data as any[]).map(blog => ({
+      id: blog.id,
+      title: blog.title,
+      slug: blog.slug || this.generateSlug(blog.title),
+      content: blog.content,
+      excerpt: blog.excerpt || this.generateExcerpt(blog.content),
+      thumbnail: blog.thumbnail,
+      video_url: blog.video_url,
+      created_at: blog.created_at,
+      updated_at: blog.updated_at || blog.created_at,
+      published_at: blog.published_at || blog.created_at,
+      views: blog.views || 0,
+      reading_time: blog.reading_time || Math.ceil(blog.content.split(' ').length / 200),
+      tags: blog.tags || [],
+      type: blog.type || 'Tutorial',
+      status: blog.status || 'published',
+      featured: blog.featured || false
+    })) as BlogPost[]
   }
 
   async getPopularBlogs(limit = 5): Promise<BlogPost[]> {
@@ -94,7 +183,25 @@ class BlogService {
       .limit(limit)
 
     if (error) throw error
-    return data as BlogPost[]
+    
+    return (data as any[]).map(blog => ({
+      id: blog.id,
+      title: blog.title,
+      slug: blog.slug || this.generateSlug(blog.title),
+      content: blog.content,
+      excerpt: blog.excerpt || this.generateExcerpt(blog.content),
+      thumbnail: blog.thumbnail,
+      video_url: blog.video_url,
+      created_at: blog.created_at,
+      updated_at: blog.updated_at || blog.created_at,
+      published_at: blog.published_at || blog.created_at,
+      views: blog.views || 0,
+      reading_time: blog.reading_time || Math.ceil(blog.content.split(' ').length / 200),
+      tags: blog.tags || [],
+      type: blog.type || 'Tutorial',
+      status: blog.status || 'published',
+      featured: blog.featured || false
+    })) as BlogPost[]
   }
 
   async getRecentBlogs(limit = 5): Promise<BlogPost[]> {

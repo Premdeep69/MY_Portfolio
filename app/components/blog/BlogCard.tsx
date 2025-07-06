@@ -1,12 +1,11 @@
 "use client"
 
-import { useRef, useEffect } from "react"
-import { Link } from "react-router-dom"
-import { useTranslation } from "react-i18next"
-import { Calendar, Clock, Eye, Tag } from 'lucide-react'
 import { format } from "date-fns"
+import { Calendar, Clock, Eye, Tag } from 'lucide-react'
+import { useRef } from "react"
+import { useTranslation } from "react-i18next"
+import { Link } from "react-router-dom"
 import { BlogPost } from "../../lib/supabase"
-import { blogAnimations } from "../../utils/blogAnimation"
 
 interface BlogCardProps {
   blog: BlogPost
@@ -34,7 +33,7 @@ export default function BlogCard({ blog, index = 0 }: BlogCardProps) {
       ref={cardRef}
       className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group hover:-translate-y-2"
     >
-      <Link to={`/blog/${blog.slug}`} className="block">
+      <Link to={`/blog/${blog.slug || blog.id}`} className="block">
         {/* Thumbnail */}
         <div className="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600 overflow-hidden">
           {blog.thumbnail ? (

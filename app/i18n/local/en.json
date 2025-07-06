@@ -3,7 +3,8 @@
       "home": "Home",
       "about": "About",
       "projects": "Projects",
-      "contact": "Contact"
+      "contact": "Contact",
+      "blog": "Blog"
     },
     "home": {
       "greeting": "Hi, I'm",
@@ -122,13 +123,69 @@
     "language": {
       "switch": "Switch Language",
       "english": "English",
-      "nepali": "नेपाली"
+      "nepali": "नेपाली",
+      "japanese": "Japanese"
     },
     "skills": {
       "communication": "Communication",
       "problemSolving": "Problem Solving",
       "teamwork": "Teamwork",
       "timeManagement": "Time Management"
+    },
+    "blog": {
+      "title": "Blog",
+      "subtitle": "Insights, tutorials, and thoughts on web development, technology, and my journey as a developer.",
+      "showFilters": "Show Filters",
+      "hideFilters": "Hide Filters",
+      "noBlogsFound": "No blogs found",
+      "noBlogsDescription": "Try adjusting your filters or search terms.",
+      "errorLoading": "Error Loading Blogs",
+      "errorDescription": "Please try again later.",
+      "showing": "Showing",
+      "of": "of",
+      "posts": "posts",
+      "page": "Page",
+      "backToBlog": "Back to Blog",
+      "blogNotFound": "Blog Not Found",
+      "blogNotFoundDescription": "The blog post you are looking for does not exist or the slug is missing.",
+      "blogPostNotFound": "Blog Post Not Found",
+      "blogPostNotFoundDescription": "The blog post you're looking for doesn't exist or has been removed.",
+      "share": "Share",
+      "tags": "Tags",
+      "relatedPosts": "Related Posts",
+      "quickInfo": "Quick Info",
+      "published": "Published",
+      "readingTime": "Reading Time",
+      "views": "Views",
+      "type": "Type",
+      "aboutAuthor": "About the Author",
+      "authorDescription": "Aspiring Full-Stack Developer passionate about React Native and JavaScript",
+      "filters": {
+        "title": "Filters",
+        "search": "Search blogs...",
+        "searchPlaceholder": "Search by title or content...",
+        "tags": "Tags",
+        "allTags": "All Tags",
+        "types": "Types",
+        "allTypes": "All Types",
+        "sortBy": "Sort by",
+        "sortOptions": {
+          "newest": "Newest First",
+          "oldest": "Oldest First",
+          "mostViewed": "Most Viewed",
+          "titleAZ": "Title A-Z",
+          "titleZA": "Title Z-A",
+          "readingTime": "Reading Time"
+        },
+        "clearFilters": "Clear Filters",
+        "applyFilters": "Apply Filters"
+      },
+      "pagination": {
+        "previous": "Previous",
+        "next": "Next",
+        "page": "Page",
+        "of": "of"
+      }
     }
   }
   

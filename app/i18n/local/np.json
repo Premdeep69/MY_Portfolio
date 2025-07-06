@@ -3,7 +3,8 @@
       "home": "गृह",
       "about": "बारेमा",
       "projects": "परियोजनाहरू",
-      "contact": "सम्पर्क"
+      "contact": "सम्पर्क",
+      "blog": "ब्लग"
     },
     "home": {
       "greeting": "नमस्ते, म",
@@ -122,13 +123,69 @@
     "language": {
       "switch": "भाषा बदल्नुहोस्",
       "english": "English",
-      "nepali": "नेपाली"
+      "nepali": "नेपाली",
+      "japanese": "Japanese"
     },
     "skills": {
       "communication": "सञ्चार",
       "problemSolving": "समस्या समाधान",
       "teamwork": "टोली कार्य",
       "timeManagement": "समय व्यवस्थापन"
+    },
+    "blog": {
+      "title": "ब्लग",
+      "subtitle": "वेब डेभलपमेन्ट, प्रविधि र डेभलपरको रूपमा मेरो यात्राको बारेमा अन्तर्दृष्टि, ट्युटोरियल र विचारहरू।",
+      "showFilters": "फिल्टरहरू देखाउनुहोस्",
+      "hideFilters": "फिल्टरहरू लुकाउनुहोस्",
+      "noBlogsFound": "कुनै ब्लग फेला परेनन्",
+      "noBlogsDescription": "फिल्टरहरू वा खोज शब्दहरू समायोजन गर्न प्रयास गर्नुहोस्।",
+      "errorLoading": "ब्लगहरू लोड गर्न त्रुटि",
+      "errorDescription": "कृपया पछि फेरि प्रयास गर्नुहोस्।",
+      "showing": "देखाइँदै",
+      "of": "मध्ये",
+      "posts": "पोस्टहरू",
+      "page": "पृष्ठ",
+      "backToBlog": "ब्लगमा फिर्ता",
+      "blogNotFound": "ब्लग फेला परेन",
+      "blogNotFoundDescription": "तपाईंले खोजिरहनुभएको ब्लग पोस्ट अवस्थित छैन वा स्लग हराइरहेको छ।",
+      "blogPostNotFound": "ब्लग पोस्ट फेला परेन",
+      "blogPostNotFoundDescription": "तपाईंले खोजिरहनुभएको ब्लग पोस्ट अवस्थित छैन वा हटाइएको छ।",
+      "share": "शेयर गर्नुहोस्",
+      "tags": "ट्यागहरू",
+      "relatedPosts": "सम्बन्धित पोस्टहरू",
+      "quickInfo": "द्रुत जानकारी",
+      "published": "प्रकाशित",
+      "readingTime": "पढ्ने समय",
+      "views": "हेर्नेहरू",
+      "type": "प्रकार",
+      "aboutAuthor": "लेखकको बारेमा",
+      "authorDescription": "React Native र JavaScript प्रति जोशिलो आकांक्षी फुल-स्ट्याक डेभलपर",
+      "filters": {
+        "title": "फिल्टरहरू",
+        "search": "ब्लगहरू खोज्नुहोस्...",
+        "searchPlaceholder": "शीर्षक वा सामग्रीद्वारा खोज्नुहोस्...",
+        "tags": "ट्यागहरू",
+        "allTags": "सबै ट्यागहरू",
+        "types": "प्रकारहरू",
+        "allTypes": "सबै प्रकारहरू",
+        "sortBy": "द्वारा क्रमबद्ध गर्नुहोस्",
+        "sortOptions": {
+          "newest": "नयाँ पहिले",
+          "oldest": "पुरानो पहिले",
+          "mostViewed": "सबैभन्दा धेरै हेरिएको",
+          "titleAZ": "शीर्षक A-Z",
+          "titleZA": "शीर्षक Z-A",
+          "readingTime": "पढ्ने समय"
+        },
+        "clearFilters": "फिल्टरहरू सफा गर्नुहोस्",
+        "applyFilters": "फिल्टरहरू लागू गर्नुहोस्"
+      },
+      "pagination": {
+        "previous": "अघिल्लो",
+        "next": "अर्को",
+        "page": "पृष्ठ",
+        "of": "मध्ये"
+      }
     }
   }
   

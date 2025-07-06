@@ -3,7 +3,8 @@
       "home": "ホーム",
       "about": "私について",
       "projects": "プロジェクト",
-      "contact": "お問い合わせ"
+      "contact": "お問い合わせ",
+      "blog": "ブログ"
     },
     "home": {
       "greeting": "こんにちは、私は",
@@ -130,6 +131,61 @@
       "problemSolving": "問題解決",
       "teamwork": "チームワーク",
       "timeManagement": "時間管理"
+    },
+    "blog": {
+      "title": "ブログ",
+      "subtitle": "Web開発、技術、そして開発者としての私の旅についての洞察、チュートリアル、考え。",
+      "showFilters": "フィルターを表示",
+      "hideFilters": "フィルターを非表示",
+      "noBlogsFound": "ブログが見つかりません",
+      "noBlogsDescription": "フィルターや検索語を調整してみてください。",
+      "errorLoading": "ブログの読み込みエラー",
+      "errorDescription": "後でもう一度お試しください。",
+      "showing": "表示中",
+      "of": "の",
+      "posts": "投稿",
+      "page": "ページ",
+      "backToBlog": "ブログに戻る",
+      "blogNotFound": "ブログが見つかりません",
+      "blogNotFoundDescription": "お探しのブログ投稿は存在しないか、スラッグが不足しています。",
+      "blogPostNotFound": "ブログ投稿が見つかりません",
+      "blogPostNotFoundDescription": "お探しのブログ投稿は存在しないか、削除されています。",
+      "share": "共有",
+      "tags": "タグ",
+      "relatedPosts": "関連投稿",
+      "quickInfo": "クイック情報",
+      "published": "公開日",
+      "readingTime": "読書時間",
+      "views": "閲覧数",
+      "type": "タイプ",
+      "aboutAuthor": "著者について",
+      "authorDescription": "React NativeとJavaScriptに情熱を持つ志望フルスタック開発者",
+      "filters": {
+        "title": "フィルター",
+        "search": "ブログを検索...",
+        "searchPlaceholder": "タイトルやコンテンツで検索...",
+        "tags": "タグ",
+        "allTags": "すべてのタグ",
+        "types": "タイプ",
+        "allTypes": "すべてのタイプ",
+        "sortBy": "並び替え",
+        "sortOptions": {
+          "newest": "新しい順",
+          "oldest": "古い順",
+          "mostViewed": "閲覧数順",
+          "titleAZ": "タイトルA-Z",
+          "titleZA": "タイトルZ-A",
+          "readingTime": "読書時間"
+        },
+        "clearFilters": "フィルターをクリア",
+        "applyFilters": "フィルターを適用"
+      },
+      "pagination": {
+        "previous": "前へ",
+        "next": "次へ",
+        "page": "ページ",
+        "of": "の"
+      }
     }
   }
   

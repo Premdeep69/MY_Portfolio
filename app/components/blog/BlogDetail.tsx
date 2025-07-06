@@ -1,19 +1,18 @@
 "use client"
 
-import { useRef, useEffect } from "react"
-import { useParams, Link } from "react-router-dom"
+import { format } from "date-fns"
+import { ArrowLeft, Calendar, Clock, Eye, Share2, Tag, User } from 'lucide-react'
+import { useEffect, useRef } from "react"
 import { useTranslation } from "react-i18next"
 import ReactMarkdown from "react-markdown"
-import remarkGfm from "remark-gfm"
+import { Link, useParams } from "react-router-dom"
 import rehypeHighlight from "rehype-highlight"
 import rehypeRaw from "rehype-raw"
-import { format } from "date-fns"
-import { Calendar, Clock, Eye, ArrowLeft, Share2, Tag, User } from 'lucide-react'
+import remarkGfm from "remark-gfm"
 import { useBlogPost, useRelatedBlogs } from "../../hooks/useBlog"
 import { blogAnimations } from "../../utils/blogAnimation"
 import AnimatedPage from "../AnimatedPage"
 import BlogCard from "./BlogCard"
-import BlogSkeleton from "./BlogSkeleton"
 
 export default function BlogDetail() {
   const { slug } = useParams<{ slug: string }>()
@@ -30,6 +29,8 @@ export default function BlogDetail() {
     blog?.tags || [],
     3
   )
+
+
 
   // Animate elements when blog loads
   useEffect(() => {
@@ -95,19 +96,29 @@ export default function BlogDetail() {
     )
   }
 
+  if (!blog && !isLoading) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[40vh] text-center">
+        <h2 className="text-2xl font-bold mb-2">{t('blog.blogNotFound')}</h2>
+        <p className="text-gray-600 mb-4">{t('blog.blogNotFoundDescription')}</p>
+        <a href="/blog" className="text-blue-600 hover:underline">{t('blog.backToBlog')}</a>
+      </div>
+    );
+  }
+
   if (error || !blog) {
     return (
       <AnimatedPage>
         <div className="py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">Blog Post Not Found</h1>
-            <p className="text-gray-600 mb-8">The blog post you're looking for doesn't exist or has been removed.</p>
+            <h1 className="text-2xl font-bold text-gray-900 mb-4">{t('blog.blogPostNotFound')}</h1>
+            <p className="text-gray-600 mb-8">{t('blog.blogPostNotFoundDescription')}</p>
             <Link
               to="/blog"
               className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center"
             >
               <ArrowLeft size={18} className="mr-2" />
-              Back to Blog
+              {t('blog.backToBlog')}
             </Link>
           </div>
         </div>
@@ -126,7 +137,7 @@ export default function BlogDetail() {
               className="text-blue-600 hover:text-blue-800 transition-colors inline-flex items-center"
             >
               <ArrowLeft size={18} className="mr-2" />
-              Back to Blog
+              {t('blog.backToBlog')}
             </Link>
           </div>
 
@@ -162,14 +173,14 @@ export default function BlogDetail() {
                 <Calendar size={16} className="mr-2" />
                 <span>{format(new Date(blog.created_at), 'MMMM dd, yyyy')}</span>
               </div>
-              <div className="flex items-center">
-                <Clock size={16} className="mr-2" />
-                <span>{blog.reading_time} min read</span>
-              </div>
-              <div className="flex items-center">
-                <Eye size={16} className="mr-2" />
-                <span>{blog.views} views</span>
-              </div>
+                          <div className="flex items-center">
+              <Clock size={16} className="mr-2" />
+              <span>{blog.reading_time} {t('blog.readingTime')}</span>
+            </div>
+            <div className="flex items-center">
+              <Eye size={16} className="mr-2" />
+              <span>{blog.views} {t('blog.views')}</span>
+            </div>
             </div>
 
             {/* Share Button */}
@@ -179,7 +190,7 @@ export default function BlogDetail() {
                 className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center"
               >
                 <Share2 size={16} className="mr-2" />
-                Share
+                {t('blog.share')}
               </button>
             </div>
 
@@ -255,7 +266,7 @@ export default function BlogDetail() {
               <div ref={tagsRef} className="mt-12 pt-8 border-t border-gray-200">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
                   <Tag size={18} className="mr-2" />
-                  Tags
+                  {t('blog.tags')}
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {blog.tags.map((tag) => (
@@ -276,22 +287,22 @@ export default function BlogDetail() {
               <div className="sticky top-8 space-y-8">
                 {/* Table of Contents (if needed) */}
                 <div className="bg-gray-50 rounded-lg p-6">
-                  <h3 className="font-semibold text-gray-900 mb-4">Quick Info</h3>
+                  <h3 className="font-semibold text-gray-900 mb-4">{t('blog.quickInfo')}</h3>
                   <div className="space-y-3 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Published:</span>
+                      <span className="text-gray-600">{t('blog.published')}:</span>
                       <span className="font-medium">{format(new Date(blog.created_at), 'MMM dd, yyyy')}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Reading Time:</span>
+                      <span className="text-gray-600">{t('blog.readingTime')}:</span>
                       <span className="font-medium">{blog.reading_time} min</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Views:</span>
+                      <span className="text-gray-600">{t('blog.views')}:</span>
                       <span className="font-medium">{blog.views}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Type:</span>
+                      <span className="text-gray-600">{t('blog.type')}:</span>
                       <span className="font-medium">{blog.type}</span>
                     </div>
                   </div>
@@ -299,14 +310,14 @@ export default function BlogDetail() {
 
                 {/* Author Info */}
                 <div className="bg-gray-50 rounded-lg p-6">
-                  <h3 className="font-semibold text-gray-900 mb-4">About the Author</h3>
+                  <h3 className="font-semibold text-gray-900 mb-4">{t('blog.aboutAuthor')}</h3>
                   <div className="text-center">
                     <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-3 flex items-center justify-center text-white font-bold text-lg">
                       PR
                     </div>
                     <h4 className="font-medium text-gray-900">Premdeep Rai</h4>
                     <p className="text-sm text-gray-600 mt-2">
-                      Aspiring Full-Stack Developer passionate about React Native and JavaScript
+                      {t('blog.authorDescription')}
                     </p>
                   </div>
                 </div>
@@ -317,7 +328,7 @@ export default function BlogDetail() {
           {/* Related Blogs */}
           {relatedBlogs.length > 0 && (
             <section className="mt-16 pt-16 border-t border-gray-200">
-              <h2 className="text-2xl font-bold text-gray-900 mb-8">Related Posts</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">{t('blog.relatedPosts')}</h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {relatedBlogs.map((relatedBlog) => (
                   <BlogCard key={relatedBlog.id} blog={relatedBlog} />

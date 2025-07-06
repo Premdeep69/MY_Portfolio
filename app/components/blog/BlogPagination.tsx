@@ -1,7 +1,8 @@
 "use client"
 
-import { useRef, useEffect } from "react"
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { useEffect, useRef } from "react"
+import { useTranslation } from "react-i18next"
 import { blogAnimations } from "../../utils/blogAnimation"
 
 interface BlogPaginationProps {
@@ -11,6 +12,7 @@ interface BlogPaginationProps {
 }
 
 export default function BlogPagination({ currentPage, totalPages, onPageChange }: BlogPaginationProps) {
+  const { t } = useTranslation()
   const paginationRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -67,7 +69,7 @@ export default function BlogPagination({ currentPage, totalPages, onPageChange }
         }`}
       >
         <ChevronLeft size={16} className="mr-1" />
-        Previous
+        {t('blog.pagination.previous')}
       </button>
 
       {/* Page Numbers */}
@@ -100,7 +102,7 @@ export default function BlogPagination({ currentPage, totalPages, onPageChange }
             : 'text-gray-700 hover:bg-gray-100'
         }`}
       >
-        Next
+        {t('blog.pagination.next')}
         <ChevronRight size={16} className="ml-1" />
       </button>
     </div>

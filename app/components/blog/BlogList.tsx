@@ -1,15 +1,15 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { useBlogPosts } from "../../hooks/useBlog"
 import { BlogFilters, BlogSortOptions } from "../../lib/supabase"
 import { blogAnimations } from "../../utils/blogAnimation"
+import AnimatedPage from "../AnimatedPage"
 import BlogCard from "./BlogCard"
 import BlogFiltersComponent from "./BlogFilters"
 import BlogPagination from "./BlogPagination"
 import BlogSkeleton from "./BlogSkeleton"
-import AnimatedPage from "../AnimatedPage"
 
 export default function BlogList() {
   const { t } = useTranslation()
@@ -23,13 +23,17 @@ export default function BlogList() {
 
   const { data, isLoading, error } = useBlogPosts(filters, sort, { page: currentPage, limit: 6 })
 
+  // Debug output
+  console.log('Fetched blog data:', data);
+  console.log('Loading:', isLoading, 'Error:', error);
+
   // Animate blog cards when data changes
   useEffect(() => {
-    if (data?.data && blogGridRef.current) {
-      const cards = Array.from(blogGridRef.current.children) as HTMLElement[]
-      blogAnimations.animateBlogCards(cards)
+    if (blogGridRef.current) {
+      const cards = Array.from(blogGridRef.current.children) as HTMLElement[];
+      blogAnimations.animateBlogCards(cards);
     }
-  }, [data?.data])
+  }, [data?.data]);
 
   // Animate filters when toggled
   useEffect(() => {
@@ -60,8 +64,8 @@ export default function BlogList() {
         <div className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Error Loading Blogs</h2>
-              <p className="text-gray-600">Please try again later.</p>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('blog.errorLoading')}</h2>
+              <p className="text-gray-600">{t('blog.errorDescription')}</p>
             </div>
           </div>
         </div>
@@ -75,9 +79,9 @@ export default function BlogList() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">Blog</h1>
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">{t('blog.title')}</h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Insights, tutorials, and thoughts on web development, technology, and my journey as a developer.
+              {t('blog.subtitle')}
             </p>
           </div>
 
@@ -90,7 +94,7 @@ export default function BlogList() {
               <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
               </svg>
-              {showFilters ? 'Hide Filters' : 'Show Filters'}
+              {showFilters ? t('blog.hideFilters') : t('blog.showFilters')}
             </button>
           </div>
 
@@ -107,8 +111,8 @@ export default function BlogList() {
           {/* Results Summary */}
           {data && (
             <div className="mb-6 text-gray-600">
-              Showing {data.data.length} of {data.count} posts
-              {currentPage > 1 && ` (Page ${currentPage} of ${data.totalPages})`}
+              {t('blog.showing')} {data.data.length} {t('blog.of')} {data.count} {t('blog.posts')}
+              {currentPage > 1 && ` (${t('blog.page')} ${currentPage} ${t('blog.of')} ${data.totalPages})`}
             </div>
           )}
 
@@ -121,8 +125,8 @@ export default function BlogList() {
             </div>
           ) : data?.data.length === 0 ? (
             <div className="text-center py-12">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">No blogs found</h3>
-              <p className="text-gray-600">Try adjusting your filters or search terms.</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">{t('blog.noBlogsFound')}</h3>
+              <p className="text-gray-600">{t('blog.noBlogsDescription')}</p>
             </div>
           ) : (
             <>

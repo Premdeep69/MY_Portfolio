@@ -1,8 +1,8 @@
 "use client"
 
+import { ChevronDown, Search, X } from 'lucide-react'
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
-import { Search, X, ChevronDown } from 'lucide-react'
 import { useBlogTags, useBlogTypes } from "../../hooks/useBlog"
 import { BlogFilters, BlogSortOptions } from "../../lib/supabase"
 
@@ -69,7 +69,7 @@ export default function BlogFiltersComponent({
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
           <input
             type="text"
-            placeholder="Search blogs..."
+            placeholder={t('blog.filters.search')}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -92,7 +92,7 @@ export default function BlogFiltersComponent({
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Sort */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Sort By</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">{t('blog.filters.sortBy')}</label>
           <select
             value={`${sort.field}-${sort.direction}`}
             onChange={(e) => {
@@ -101,22 +101,22 @@ export default function BlogFiltersComponent({
             }}
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           >
-            <option value="created_at-desc">Newest First</option>
-            <option value="created_at-asc">Oldest First</option>
-            <option value="views-desc">Most Popular</option>
-            <option value="title-asc">Title A-Z</option>
-            <option value="reading_time-asc">Quick Reads</option>
+            <option value="created_at-desc">{t('blog.filters.sortOptions.newest')}</option>
+            <option value="created_at-asc">{t('blog.filters.sortOptions.oldest')}</option>
+            <option value="views-desc">{t('blog.filters.sortOptions.mostViewed')}</option>
+            <option value="title-asc">{t('blog.filters.sortOptions.titleAZ')}</option>
+            <option value="reading_time-asc">{t('blog.filters.sortOptions.readingTime')}</option>
           </select>
         </div>
 
         {/* Type Filter */}
         <div className="relative">
-          <label className="block text-sm font-medium text-gray-700 mb-2">Type</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">{t('blog.filters.types')}</label>
           <button
             onClick={() => setShowTypeDropdown(!showTypeDropdown)}
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-left flex items-center justify-between"
           >
-            <span>{filters.type || "All Types"}</span>
+            <span>{filters.type || t('blog.filters.allTypes')}</span>
             <ChevronDown size={16} className={`transform transition-transform ${showTypeDropdown ? 'rotate-180' : ''}`} />
           </button>
           
@@ -126,7 +126,7 @@ export default function BlogFiltersComponent({
                 onClick={() => handleTypeChange("")}
                 className={`w-full px-3 py-2 text-left hover:bg-gray-50 ${!filters.type ? 'bg-blue-50 text-blue-600' : ''}`}
               >
-                All Types
+                {t('blog.filters.allTypes')}
               </button>
               {allTypes.map((type) => (
                 <button
@@ -168,7 +168,7 @@ export default function BlogFiltersComponent({
                 : 'border-gray-300 text-gray-400 cursor-not-allowed'
             }`}
           >
-            Clear All
+            {t('blog.filters.clearFilters')}
           </button>
         </div>
       </div>
@@ -176,12 +176,12 @@ export default function BlogFiltersComponent({
       {/* Tags */}
       <div>
         <div className="flex items-center justify-between mb-3">
-          <label className="text-sm font-medium text-gray-700">Tags</label>
+          <label className="text-sm font-medium text-gray-700">{t('blog.filters.tags')}</label>
           <button
             onClick={() => setShowTagDropdown(!showTagDropdown)}
             className="text-sm text-blue-600 hover:text-blue-800"
           >
-            {showTagDropdown ? 'Hide' : 'Show'} All Tags
+            {showTagDropdown ? 'Hide' : 'Show'} {t('blog.filters.allTags')}
           </button>
         </div>
 
